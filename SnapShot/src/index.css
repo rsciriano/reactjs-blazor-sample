@@ -138,12 +138,16 @@ input {
 
 .photo-container ul img {
   width: 100%;
+  /* This cause side efects with image details dialog
   transform: scale(1.25);
   transition: transform 1.25s;
+  */
 }
 
 .photo-container li:hover img {
+  /* This cause side efects with image details dialog
   transform: scale(1.65);
+  */
 }
 
 .photo-container .not-found {

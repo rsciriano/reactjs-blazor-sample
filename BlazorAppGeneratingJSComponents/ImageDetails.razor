@@ -1,0 +1,21 @@
+@attribute [GenerateReact]
+
+<div class="overlay">
+	<div class="popup">
+		<a class="close" @onclick="CustomCallback">&times;</a>
+		<h2>@Title</h2>
+		<div class="content">
+			<img src="@Url" />
+            <p>Image id: @Id</p>
+		</div>
+	</div>
+</div>
+@code {
+    private int currentCount = 0;
+    
+    [Parameter] public string? Title { get; set; }
+    [Parameter] public string? Url { get; set; }
+    [Parameter] public string? Id { get; set; }
+    [Parameter] public EventCallback<MouseEventArgs> CustomCallback { get; set; }
+
+}
