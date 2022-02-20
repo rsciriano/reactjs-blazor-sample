@@ -20,6 +20,6 @@
 
   <Target Name="GenerateJavaScriptComponents" AfterTargets="CopyFilesToOutputDirectory" DependsOnTargets="HackRazorSdk;ResolveTagHelperRazorGenerateInputs">
     <!--<GenerateAngularComponents OutputPath="$(OutputPath)" IntermediateOutputPath="$(IntermediateOutputPath)" AssemblyName="$(AssemblyName)" JavaScriptComponentOutputDirectory="..\angular-app-with-blazor\src\app" />-->
-    <GenerateReactComponents OutputPath="$(OutputPath)" IntermediateOutputPath="$(IntermediateOutputPath)" AssemblyName="$(AssemblyName)" JavaScriptComponentOutputDirectory="..\SnapShot\src\components\blazor" />
+    <GenerateReactComponents OutputPath="$(OutputPath)" IntermediateOutputPath="$(IntermediateOutputPath)" AssemblyName="$(AssemblyName)" JavaScriptComponentOutputDirectory="..\..\SnapShot\src\components\blazor" />
   </Target>
 </Project>
