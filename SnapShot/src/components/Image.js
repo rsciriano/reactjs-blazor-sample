@@ -1,5 +1,5 @@
-import React, { useCallback, useState } from "react";
-import { ImageDetails } from '../ImageDetails';
+import React from "react";
+import { ImageDetails } from './blazor/ImageDetails';
 
 class Image extends React.Component {
 
