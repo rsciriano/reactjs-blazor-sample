@@ -1,4 +1,6 @@
 @attribute [GenerateReact]
+@using ImageComments.Grpc
+@inject Greeter.GreeterClient GreeterClient
 
 <div class="overlay">
 	<div class="popup">
@@ -8,14 +10,22 @@
 			<img src="@Url" />
             <p>Image id: @Id</p>
 		</div>
+		<div class="comment-form">
+			@message
+		</div>
 	</div>
 </div>
-@code {
-    private int currentCount = 0;
-    
+@code {   
+	string message;
     [Parameter] public string? Title { get; set; }
     [Parameter] public string? Url { get; set; }
     [Parameter] public string? Id { get; set; }
     [Parameter] public EventCallback<MouseEventArgs> CustomCallback { get; set; }
 
+	protected async override Task OnInitializedAsync()
+	{
+		// sync or async code
+		var response = await GreeterClient.SayHelloAsync(new HelloRequest{ Name = "from gRPC service called from Blazor"} );
+		message = response.Message;
+	}
 }
