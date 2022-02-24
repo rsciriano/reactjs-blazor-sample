@@ -20,6 +20,43 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <span class="forkongithub"><a href="https://github.com/Yog9/SnapShot">Fork me on GitHub</a></span>
-    <script src="_framework/blazor.webassembly.js" autostart="true"></script>
+    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
+
+    <script>
+      Blazor.start({
+        loadBootResource: function (type, name, defaultUri, integrity) {
+          console.log(`Loading: '${type}', '${name}', '${defaultUri}', '${integrity}'`);
+          /*switch (type) {
+            case 'dotnetjs':
+            case 'dotnetwasm':
+            case 'timezonedata':
+              return `https://cdn.example.com/blazorwebassembly/5.0.0/${name}`;
+          }
+          */
+        }
+      });
+    </script>    
+    <!--<script type="module">
+      import { BrotliDecode } from '%PUBLIC_URL%/decode.js';
+      Blazor.start({
+        loadBootResource: function (type, name, defaultUri, integrity) {
+          if (type !== 'dotnetjs' /*&& location.hostname !== 'localhost'*/) {
+            return (async function () {
+              const response = await fetch(defaultUri + '.br', { cache: 'no-cache' });
+              if (!response.ok) {
+                throw new Error(response.statusText);
+              }
+              const originalResponseBuffer = await response.arrayBuffer();
+              const originalResponseArray = new Int8Array(originalResponseBuffer);
+              const decompressedResponseArray = BrotliDecode(originalResponseArray);
+              const contentType = type === 
+                'dotnetwasm' ? 'application/wasm' : 'application/octet-stream';
+              return new Response(decompressedResponseArray, 
+                { headers: { 'content-type': contentType } });
+            })();
+          }
+        }
+      });
+    </script>-->    
   </body>
 </html>
